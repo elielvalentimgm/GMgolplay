@@ -335,9 +335,6 @@ function App() {
                 <h4 className="font-semibold mb-4">Contato</h4>
                 <ul className="space-y-2 text-gray-400">
                   <li>📧elielvalentim.gm@gmail.com</li>
-                  
-                  <li>📱 (91) 99289-1008</li>
-                
                 </ul>
               </div>
             </div>
