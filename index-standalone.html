@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page de Vendas - Web App de Futebol</title>
+    <meta name="description" content="Todos os jogos de futebol ao vivo em um só lugar. Acesso vitalício por apenas R$ 37,90. Sem mensalidades!">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #16a34a 0%, #22c55e 50%, #16a34a 100%);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #fbbf24;
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .hero .highlight {
+            color: #fde047;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 32px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #fbbf24;
+            color: #000;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+        }
+
+        .cta-button:hover {
+            background: #f59e0b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: #f9fafb;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 16px;
+        }
+
+        .section-title p {
+            font-size: 1.25rem;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: #dcfce7;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 24px;
+        }
+
+        .feature-card:nth-child(even) .feature-icon {
+            background: #fef3c7;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 16px;
+        }
+
+        .feature-card p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 32px;
+            opacity: 0.9;
+        }
+
+        .price-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 32px auto;
+            max-width: 400px;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #fde047;
+            margin-bottom: 8px;
+        }
+
+        .price-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            opacity: 0.9;
+        }
+
+        .price-features {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .testimonial {
+            background: #f9fafb;
+            padding: 32px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px;
+        }
+
+        .star {
+            color: #fbbf24;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #374151;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            background: #16a34a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+        }
+
+        .author-info h4 {
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .author-info p {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 80px 0;
+            background: #f9fafb;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 24px;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #111827;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #f9fafb;
+        }
+
+        .faq-answer {
+            padding: 0 24px 24px;
+            color: #6b7280;
+            line-height: 1.6;
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-icon.rotated {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        .footer {
+            background: #111827;
+            color: white;
+            padding: 48px 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .footer-section p {
+            color: #9ca3af;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 24px;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .hero-features {
+                gap: 16px;
+            }
+
+            .hero-feature {
+                font-size: 0.8rem;
+            }
+
+            .price {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .features, .cta-section, .testimonials, .faq {
+                padding: 60px 0;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    🏆 Acesso Ilimitado - Pagamento Único
+                </div>
+                
+                <h1>
+                    Todos os jogos de futebol 
+                    <span class="highlight">ao vivo</span> em um só lugar
+                </h1>
+                
+                <p>
+                    Acompanhe as principais competições em tempo real, onde e quando quiser. 
+                    Sem mensalidades, sem complicação.
+                </p>
+                
+                <div style="margin-bottom: 32px;">
+                    <a href="https://pay.herospark.com/fut-app-gm-golplay-465533" target="_blank" rel="noopener noreferrer" class="cta-button">
+                        🚀 Comprar Agora por R$ 37,90
+                    </a>
+                </div>
+                
+                <div class="hero-features">
+                    <div class="hero-feature">
+                        <span>✓</span>
+                        <span>Sem mensalidade</span>
+                    </div>
+                    <div class="hero-feature">
+                        <span>✓</span>
+                        <span>Acesso vitalício</span>
+                    </div>
+                    <div class="hero-feature">
+                        <span>✓</span>
+                        <span>Todos os dispositivos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Por que escolher nosso app?</h2>
+                <p>A solução definitiva para quem ama futebol e não quer perder nenhum jogo importante</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">▶️</div>
+                    <h3>Jogos ao Vivo</h3>
+                    <p>Todas as principais ligas e campeonatos nacionais e internacionais em tempo real</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Interface Simples</h3>
+                    <p>Design intuitivo e rápido. Encontre seu jogo em segundos e assista sem complicação</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⏰</div>
+                    <h3>Acesso Ilimitado</h3>
+                    <p>Pague uma vez e tenha acesso vitalício. Assista quantos jogos quiser, quando quiser</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Sem Mensalidade</h3>
+                    <p>Chega de assinaturas caras! Um pagamento único de R$ 37,90 e pronto, é seu para sempre</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Garanta já o seu acesso vitalício</h2>
+            <p>Mais de 10.000 torcedores já estão assistindo. Não perca mais nenhum jogo!</p>
+            
+            <div class="price-box">
+                <div class="price">R$ 37,90</div>
+                <div class="price-subtitle">Pagamento único - Acesso vitalício</div>
+                <div class="price-features">
+                    <span>✓ Todos os jogos</span>
+                    <span>✓ Sem mensalidade</span>
+                    <span>✓ 7 dias de garantia</span>
+                </div>
+            </div>
+            
+            <a href="https://pay.herospark.com/fut-app-gm-golplay-465533" target="_blank" rel="noopener noreferrer" class="cta-button" style="font-size: 1.2rem; padding: 20px 40px;">
+                🔥 Comprar Agora - Acesso Imediato
+            </a>
+            
+            <p style="margin-top: 24px; font-size: 0.9rem; opacity: 0.8;">
+                Pagamento 100% seguro • Acesso em menos de 2 minutos • Suporte 24h
+            </p>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>O que nossos usuários dizem</h2>
+                <p>Mais de 10.000 torcedores satisfeitos em todo o Brasil</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text">
+                        "Finalmente posso assistir todos os jogos do Palmeiras sem perder nenhum lance! App incrível e preço justo."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">C</div>
+                        <div class="author-info">
+                            <h4>Carlos Silva</h4>
+                            <p>São Paulo, SP</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text">
+                        "Comprei há 6 meses e não me arrependo. Assisto Flamengo, Champions League, tudo em um lugar só!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">M</div>
+                        <div class="author-info">
+                            <h4>Maria Santos</h4>
+                            <p>Rio de Janeiro, RJ</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <p class="testimonial-text">
+                        "A qualidade é excelente e funciona perfeitamente no celular. Recomendo para qualquer torcedor!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">J</div>
+                        <div class="author-info">
+                            <h4>João Oliveira</h4>
+                            <p>Belo Horizonte, MG</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Dúvidas Frequentes</h2>
+                <p>Tire suas dúvidas antes de fazer sua compra</p>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(0)">
+                        <span>Funciona no celular?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer" id="faq-0">
+                        <p>Sim! Nosso app funciona perfeitamente em smartphones, tablets, computadores e Smart TVs. Interface otimizada para todos os dispositivos.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(1)">
+                        <span>Preciso pagar todo mês?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer" id="faq-1">
+                        <p>Não! É um pagamento único de R$ 37,90. Sem mensalidades, sem assinaturas. Comprou uma vez, acessa para sempre.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(2)">
+                        <span>Quantos dispositivos posso usar?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer" id="faq-2">
+                        <p>Você pode acessar em qualquer dispositivos simultaneamente com a mesma conta.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(3)">
+                        <span>Tem todos os campeonatos?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer" id="faq-3">
+                        <p>Sim! Brasileirão, Libertadores, Champions League, Premier League, La Liga, Serie A, Bundesliga e muito mais!</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(4)">
+                        <span>E se eu não gostar?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer" id="faq-4">
+                        <p>Oferecemos 7 dias de garantia total. Se não ficar satisfeito, devolvemos 100% do seu dinheiro.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(5)">
+                        <span>Como faço para acessar após a compra?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer" id="faq-5">
+                        <p>Após o pagamento, você recebe imediatamente um email com seus dados de acesso e link para download.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Não perca mais nenhum jogo!</h2>
+            <p>Junte-se aos milhares de torcedores que já garantiram seu acesso vitalício</p>
+            
+            <a href="https://pay.herospark.com/fut-app-gm-golplay-465533" target="_blank" rel="noopener noreferrer" class="cta-button" style="font-size: 1.2rem; padding: 20px 40px;">
+                ⚽️ Garantir Meu Acesso Agora
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FutebolApp</h3>
+                    <p>
+                        A plataforma definitiva para assistir todos os jogos de futebol ao vivo. 
+                        Pagamento único, acesso vitalício.
+                    </p>
+                    <div style="display: flex; gap: 24px; font-size: 0.9rem; color: #9ca3af;">
+                        <span>👥 +10.000 usuários</span>
+                        <span>⭐ 4.9/5 avaliação</span>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">🎧 Suporte</a></li>
+                        <li><a href="#">📄 Termos de Uso</a></li>
+                        <li><a href="#">🛡️ Política de Privacidade</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <ul class="footer-links">
+                        <li>📧 elielvalentim.gm@gmail.com</li>
+                        <li>📱 (91) 99289-1008</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 FutebolApp. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let openFaq = null;
+
+        function toggleFaq(index) {
+            const answer = document.getElementById(`faq-${index}`);
+            const icon = document.querySelectorAll('.faq-icon')[index];
+            
+            // Close previously opened FAQ
+            if (openFaq !== null && openFaq !== index) {
+                document.getElementById(`faq-${openFaq}`).classList.remove('active');
+                document.querySelectorAll('.faq-icon')[openFaq].classList.remove('rotated');
+            }
+            
+            // Toggle current FAQ
+            if (openFaq === index) {
+                answer.classList.remove('active');
+                icon.classList.remove('rotated');
+                openFaq = null;
+            } else {
+                answer.classList.add('active');
+                icon.classList.add('rotated');
+                openFaq = index;
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading animation to CTA buttons
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const originalText = this.textContent;
+                this.textContent = 'Redirecionando...';
+                setTimeout(() => {
+                    this.textContent = originalText;
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
